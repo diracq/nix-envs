@@ -17,14 +17,14 @@
     let
       system = "x86_64-linux";
     in {
-      # Build a NixOS configuration using the overridden nixos-wsl
-      nixosConfigurations.diracnix = nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [
-          nixos-wsl.nixosConfigurations.default
-          # You can add further customizations here (e.g. install extra packages)
+      # Build a NixOS configuration using the overridden nixos-wsl with Go installed
+      nixosConfigurations.diracnix = nixos-wsl.nixosConfigurations.default.override {
+        extraModules = [
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ pkgs.go ];
+          })
         ];
-      };
+      }
     };
 }
 
