@@ -10,8 +10,6 @@
       inputs.nixpkgs = {
         url = "github:NixOS/nixpkgs/nixos-24.11";
       };
-
-      nixosConfigurations.default.config.imports = [ ./configuration.nix ];
     };
   };
 
@@ -19,7 +17,6 @@
     let
       system = "x86_64-linux";
     in {
-      # Build a NixOS configuration using the overridden nixos-wsl
-      nixosConfigurations.diracnix = nixos-wsl.nixosConfigurations.default;
+      nixosConfigurations.tarballbase = nixos-wsl.nixosConfigurations.default
     };
 }
