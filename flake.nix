@@ -16,7 +16,15 @@
   outputs = { self, nixos-wsl, nixpkgs, ... }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
-      nixosConfigurations.tarballbase = nixos-wsl.nixosConfigurations.default
+      nixosConfigurations.tarballbase = nixos-wsl.nixosConfigurations.default;
+
+      packages.${system}.default = pkgs.writeShellScriptBin "diracsetup" (builtins.readFile ./diracsetup.sh);
+
+      apps.${system}.default = {
+        type = "app";
+        program = "${self.packages.${system}.default}/bin/diracsetup";
+      };
     };
 }
