@@ -17,14 +17,14 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      setupScript = import ./setupscript.nix { inherit pkgs; };
     in {
       nixosConfigurations.tarballbase = nixos-wsl.nixosConfigurations.default;
 
-      packages.${system}.default = pkgs.writeShellScriptBin "diracsetup" (builtins.readFile ./diracsetup.sh);
-
       apps.${system}.default = {
         type = "app";
-        program = "${self.packages.${system}.default}/bin/diracsetup";
+        program = pkgs.lib.getExe setupScript;
       };
     };
 }
