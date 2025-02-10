@@ -18,13 +18,17 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      setupScript = import ./setupscript.nix { inherit pkgs; };
+      setupScript = pkgs.writers.writePython3Bin "diracsetup" {
+        libraries = with pkgs.python312Packages; [
+          gitpython
+        ];
+      } (builtins.readFile ./setupscript.py);
     in {
       nixosConfigurations.tarballbase = nixos-wsl.nixosConfigurations.default;
 
       apps.${system}.default = {
         type = "app";
-        program = pkgs.lib.getExe setupScript;
+        program = "${setupScript}/bin/diracsetup";
       };
     };
 }
