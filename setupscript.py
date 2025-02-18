@@ -3,7 +3,8 @@ from pathlib import Path
 
 # Ask user if they are running WSL or baremetal
 while True:
-    env_type = input("Are you running WSL or baremetal? (wsl/baremetal): ").lower()
+    prompt = "Are you running WSL or baremetal? (wsl/baremetal): "
+    env_type = input(prompt).lower()
     if env_type in ["wsl", "baremetal"]:
         break
     print("Please enter either 'wsl' or 'baremetal'")
