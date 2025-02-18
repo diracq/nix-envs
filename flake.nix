@@ -22,8 +22,14 @@
         ];
       } (builtins.readFile ./setupscript.py);
     in {
-      nixosConfigurations.wsl = nixos-wsl.nixosConfigurations.default // {
-        wsl.tarball.configPath = ./configurations/configuration.nix;
+      nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.wsl
+          {
+            wsl.tarball.configPath = ./configurations;
+          }
+        ];
       };
 
       apps.${system}.default = {
