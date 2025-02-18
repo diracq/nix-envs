@@ -22,7 +22,7 @@
         ];
       } (builtins.readFile ./setupscript.py);
     in {
-      nixosConfigurations.tarballbase = nixos-wsl.nixosConfigurations.default;
+      nixosConfigurations.wsl = nixos-wsl.nixosConfigurations.default;
 
       apps.${system}.default = {
         type = "app";
