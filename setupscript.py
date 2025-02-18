@@ -27,13 +27,9 @@ with open(nixos_path / "configuration.nix", "r+") as file:
     for line in content:
         file.write(line)
         if "imports = [" in line:
+            file.write("    # import dirac configuration\n")
             file.write(f"    ./nix-envs/{env_type}.nix\n")
     file.truncate()
-
-prompt = "Would you like to apply the reccomeded .zshrc? y/(n): "
-apply_zshrc = input(prompt).lower()
-if apply_zshrc == "y":
-    print("Applying .zshrc...")
 
 # Rebuild NixOS with new configuration
 print("Rebuilding NixOS with new configuration...")
