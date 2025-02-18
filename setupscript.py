@@ -1,11 +1,27 @@
 from git import Repo
+from pathlib import Path
 
-print("Hello from nix run python!")
+# Ask user if they are running WSL or baremetal
+while True:
+    env_type = input("Are you running WSL or baremetal? (wsl/baremetal): ").lower()
+    if env_type in ["wsl", "baremetal"]:
+        break
+    print("Please enter either 'wsl' or 'baremetal'")
 
 
-repo_url = (
-    "https://github.com/"
-    "gitpython-developers/QuickStartTutorialFiles.git"
-)
+# Get path to place this repository
+nixos_path = Path("/etc/nixos")
 
-repo = Repo.clone_from(repo_url, "testrepo")
+# Clone the repository into /etc/nixos
+print("Cloning configuration into /etc/nixos")
+Repo.clone_from("https://github.com/diracq/nix-envs", nixos_path / "nix-envs")
+
+# Add import line after first "imports = [" line
+with open(nixos_path / "configuration.nix", "r+") as file:
+    content = file.readlines()
+    file.seek(0)
+    for line in content:
+        file.write(line)
+        if "imports = [" in line:
+            file.write(f"    ./nix-envs/{env_type}.nix\n")
+    file.truncate()
