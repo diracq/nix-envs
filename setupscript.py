@@ -1,3 +1,5 @@
+import subprocess
+
 from git import Repo
 from pathlib import Path
 
@@ -28,13 +30,13 @@ with open(nixos_path / "configuration.nix", "r+") as file:
             file.write(f"    ./nix-envs/{env_type}.nix\n")
     file.truncate()
 
-apply_zshrc = input("Would you like to apply the reccomeded .zshrc? y/(n): ").lower()
+prompt = "Would you like to apply the reccomeded .zshrc? y/(n): "
+apply_zshrc = input(prompt).lower()
 if apply_zshrc == "y":
     print("Applying .zshrc...")
 
 # Rebuild NixOS with new configuration
 print("Rebuilding NixOS with new configuration...")
-import subprocess
 subprocess.run(["sudo", "nixos-rebuild", "switch"], check=True)
 
 exit_message = """
