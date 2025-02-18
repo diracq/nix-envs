@@ -14,10 +14,11 @@ while True:
 nixos_path = Path("/etc/nixos")
 
 # Clone the repository into /etc/nixos
-print("Cloning configuration into /etc/nixos")
+print("Cloning configuration into /etc/nixos...")
 Repo.clone_from("https://github.com/diracq/nix-envs", nixos_path / "nix-envs")
 
 # Add import line after first "imports = [" line
+print("Modifying configuration.nix to import nix-envs configuration...")
 with open(nixos_path / "configuration.nix", "r+") as file:
     content = file.readlines()
     file.seek(0)
@@ -26,3 +27,19 @@ with open(nixos_path / "configuration.nix", "r+") as file:
         if "imports = [" in line:
             file.write(f"    ./nix-envs/{env_type}.nix\n")
     file.truncate()
+
+apply_zshrc = input("Would you like to apply the reccomeded .zshrc? y/(n): ").lower()
+if apply_zshrc == "y":
+    print("Applying .zshrc...")
+
+# Rebuild NixOS with new configuration
+print("Rebuilding NixOS with new configuration...")
+import subprocess
+subprocess.run(["sudo", "nixos-rebuild", "switch"], check=True)
+
+exit_message = """
+Done! You can now start using your new NixOS environment.
+
+Reccomended to next run gh auth login to login to github.
+"""
+print(exit_message)
