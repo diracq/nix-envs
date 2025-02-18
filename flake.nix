@@ -22,8 +22,8 @@
         ];
       } (builtins.readFile ./setupscript.py);
     in {
-      nixosConfigurations.wsl = nixos-wsl.nixosConfigurations.default // {
-        wsl.tarball.configPath = ./configurations/configuration.nix;
+      nixosConfigurations.wsl = nixos-wsl.nixosConfigurations.default.override {
+        wsl.tarball.configPath = ./configurations;
       };
 
       apps.${system}.default = {
