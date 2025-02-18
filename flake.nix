@@ -11,7 +11,13 @@
     };
   };
 
-  outputs = { self, nixos-wsl, nixpkgs, ... }:
+  outputs =
+    {
+      self,
+      nixos-wsl,
+      nixpkgs,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -21,7 +27,8 @@
           gitpython
         ];
       } (builtins.readFile ./setupscript.py);
-    in {
+    in
+    {
       nixosConfigurations.wsl = nixos-wsl.nixosConfigurations.default;
 
       apps.${system}.default = {

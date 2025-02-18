@@ -2,7 +2,12 @@
 
 {
   # enable nix-command and flakes, required for many workflows
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  programs.nix-ld.enable = true;
 
   # install system packages
   environment.systemPackages = with pkgs; [
@@ -28,7 +33,6 @@
     yazi
     bat
     fd
-    starship
     btop
     htop
     cht-sh
@@ -40,6 +44,19 @@
   ];
 
   # enable zsh, set as default shell
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  programs.fzf = {
+    keybindings = true;
+  };
+
+  programs.starship = {
+    enable = true;
+  };
+
   users.defaultUserShell = pkgs.zsh;
 }
