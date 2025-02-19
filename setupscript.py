@@ -38,6 +38,6 @@ subprocess.run(["sudo", "nixos-rebuild", "switch"], check=True)
 exit_message = """
 Done! You can now start using your new NixOS environment.
 
-Reccomended to next run gh auth login to login to github.
+Recommended to next run gh auth login to login to github.
 """
 print(exit_message)
