@@ -51,6 +51,11 @@
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+
+    # enable direnv hook
+    shellInit = ''
+      eval "$(direnv hook zsh)"
+    '';
   };
 
   programs.fzf = {
