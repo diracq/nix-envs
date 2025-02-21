@@ -16,6 +16,10 @@
     code-cursor
     vlc
     qalculate-gtk
+
+    # hardware tools
+    pciutils
+    lshw
   ];
 
   programs._1password.enable = true;
