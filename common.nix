@@ -43,6 +43,9 @@
     nix-output-monitor
   ];
 
+  # enable direnv for automatically activating nix shell
+  programs.direnv.enable = true;
+
   # enable zsh, set as default shell
   programs.zsh = {
     enable = true;
