@@ -68,14 +68,18 @@ nix --extra-experimental-features "nix-command flakes" run github:diracq/nix-env
 
 This will clone the nix-envs repository to /etc/nixos/nix-envs and modify /etc/nixos/configuration.nix to import the nix-envs modules.
 
-## Configuration
+## Initial Setup and Configuration
 
 First, run the following to configure github and our monorepo. Be sure to select **SSH** as the authentication method.
 
 ```bash
+mkdir dirac && cd dirac
 gh auth login
-gh repo clone diracq/buildos-web
+gh repo clone diracq/buildos-web && cd buildos-web
+direnv allow
 ```
+
+You should see a message that states `nix environment initialized`.
 
 ### Updating Packages
 
