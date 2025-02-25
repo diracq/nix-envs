@@ -11,6 +11,7 @@
     firefox
     slack
     postman
+    kdePackages.okular
 
     # useful gui tools
     code-cursor
