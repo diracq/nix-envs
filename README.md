@@ -6,9 +6,9 @@ There is support for both baremetal installations of NixOS installation in WSL2.
 ## Installation
 ### WSL2 Preconfigured Tarball
 
-Navigate to [the tarball available on the Dirac Google Drive](https://drive.google.com/drive/folders/0AGQuWK0xz_dmUk9PVA).
+Navigate to [the engineering folder on the Dirac Google Drive](https://drive.google.com/drive/folders/0AGQuWK0xz_dmUk9PVA).
 
-Download the `dirac-nixos.wsl` file to your local machine. Navigate to the file in file exporer. Then, right click in the folder and select "Open in Terminal".
+Download the `dirac-nixos.wsl` file to your local machine. Navigate to the file in file explorer. Then, right click in the folder and select "Open in Terminal".
 
 ```ps2
 wsl --install
