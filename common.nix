@@ -68,16 +68,6 @@
 
     enableBashIntegration = true;
     enableZshIntegration = true;
-    enableNushellIntegration = true;
-
-    config = {
-      whitelist = {
-        prefix = [
-          "~/buildos-web"
-          "~/dirac"
-        ];
-      };
-    };
   };
 
   programs.fzf = {
