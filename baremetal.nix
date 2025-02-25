@@ -17,6 +17,7 @@
     code-cursor
     vlc
     qalculate-gtk
+    gimp
 
     # hardware tools
     pciutils
