@@ -43,19 +43,32 @@
     nix-output-monitor
   ];
 
-  # enable direnv for automatically activating nix shell
-  programs.direnv.enable = true;
-
   # enable zsh, set as default shell
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+  };
 
-    # enable direnv hook
-    shellInit = ''
-      eval "$(direnv hook zsh)"
-    '';
+  programs.nushell.enable = true;
+
+  # enable direnv for automatically activating nix shell in buildos-web
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableNushellIntegration = true;
+
+    config = {
+      whitelist = {
+        prefix = [
+          "~/buildos-web"
+          "~/dirac"
+        ];
+      };
+    };
   };
 
   programs.fzf = {
