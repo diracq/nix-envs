@@ -43,12 +43,13 @@
     nix-output-monitor
   ];
 
-  # enable zsh, set as default shell
+  # enable and configure zsh, set as default shell
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
+  users.defaultUserShell = pkgs.zsh;
 
   programs.nushell.enable = true;
 
@@ -78,6 +79,4 @@
   programs.starship = {
     enable = true;
   };
-
-  users.defaultUserShell = pkgs.zsh;
 }
