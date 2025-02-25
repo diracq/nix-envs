@@ -13,8 +13,6 @@
   environment.systemPackages = with pkgs; [
     # required cli tools
     curl
-    git
-    git-lfs
     gh
     unzip
     zstd
@@ -42,6 +40,16 @@
     nix-search-cli
     nix-output-monitor
   ];
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    extraConfig = {
+      push = {
+        autoSetupRemote = true;
+      };
+    };
+  };
 
   # enable and configure zsh, set as default shell
   programs.zsh = {
