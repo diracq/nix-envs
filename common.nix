@@ -34,6 +34,7 @@
     btop
     htop
     cht-sh
+    nushell
 
     # useful nix utils
     manix
@@ -58,8 +59,6 @@
     syntaxHighlighting.enable = true;
   };
   users.defaultUserShell = pkgs.zsh;
-
-  programs.nushell.enable = true;
 
   # enable direnv for automatically activating nix shell in buildos-web
   programs.direnv = {
