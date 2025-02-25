@@ -70,13 +70,21 @@ This will clone the nix-envs repository to /etc/nixos/nix-envs and modify /etc/n
 
 ## Initial Setup and Configuration
 
-First, run the following to configure github and our monorepo. Be sure to select **SSH** as the authentication method.
+First, update your system configuration and apply it:
+
+```bash
+sudo git -C /etc/nixos/nix-envs pull
+sudo nixos-rebuild switch --upgrade
+```
+
+Then, run the following to configure github and our monorepo. Be sure to select **SSH** as the authentication method.
 
 ```bash
 mkdir dirac && cd dirac
 gh auth login
-gh repo clone diracq/buildos-web && cd buildos-web
-direnv allow
+gh repo clone diracq/buildos-web -- --recurse-submodules && cd buildos-web
+# you may need to explicitly allow the direnv hook
+cd buildos-web && direnv allow
 ```
 
 You should see a message that states `nix environment initialized`.
@@ -88,6 +96,7 @@ To update NixOS and rebuild based on your `/env/nixos/configuration.nix` file, r
 ```bash
 sudo nixos-rebuild switch --upgrade
 ```
+You can omit `--upgrade` if you just want to evaluate the system configuration and not update packages.
 
 ### Further Customization
 
