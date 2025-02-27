@@ -48,10 +48,10 @@ def setup_github():
 
     print("Logging in to GitHub with gh...")
     cprint(
-        "Please select SSH as the authentication method and generate a new SSH key.",
+        "Please select the option to generate a new SSH key (unless you already have one).",
         "yellow",
     )
-    subprocess.run(["gh", "auth", "login"], check=True)
+    subprocess.run(["gh", "auth", "login", "--git-protocol", "ssh"], check=True)
 
 
 if __name__ == "__main__":
