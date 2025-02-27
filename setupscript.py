@@ -15,7 +15,10 @@ def setup_nixenvs(env_type):
 
     # exit if nix-envs directory already exists
     if nixenvs_path.exists():
-        cprint("Warning: nix-envs directory already exists, skipping clone.", "yellow")
+        cprint(
+            "Warning: nix-envs directory already exists, skipping clone.",
+            "yellow"
+        )
         return
 
     print("Cloning configuration into /etc/nixos...")
