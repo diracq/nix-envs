@@ -133,7 +133,7 @@ wsl --install --from-file nixos.wsl --name DiracNixOS
 ### Run setup script
 
 ```bash
-nix --extra-experimental-features "nix-command flakes" run github:diracq/nix-envs
+sudo nix --extra-experimental-features "nix-command flakes" run github:diracq/nix-envs
 ```
 
 This will clone the nix-envs repository to /etc/nixos/nix-envs and modify /etc/nixos/configuration.nix to import the nix-envs modules.
