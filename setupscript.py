@@ -44,17 +44,26 @@ def setup_github():
     """
     print("Checking GitHub login status...")
 
-    result = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True)
+    result = subprocess.run(
+        ["gh", "auth", "status"],
+        capture_output=True,
+        text=True
+    )
     if result.returncode == 0 and "Logged in to github.com account" in result.stdout:
         cprint("You are already logged in to GitHub.", "green")
         return
 
     print("Logging in to GitHub with gh...")
-    cprint(
-        "Please select the option to generate a new SSH key (unless you already have one).",
-        "yellow",
+    msg = (
+        "Please select the option to generate a new SSH key "
+        "(unless you already have one)."
     )
-    subprocess.run(["gh", "auth", "login", "--git-protocol", "ssh"], check=True)
+    cprint(msg, "yellow")
+
+    subprocess.run(
+        ["gh", "auth", "login", "--git-protocol", "ssh"],
+        check=True
+    )
 
 
 if __name__ == "__main__":
