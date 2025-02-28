@@ -12,6 +12,7 @@
     slack
     postman
     kdePackages.okular
+    ghostty
 
     # useful gui tools
     code-cursor

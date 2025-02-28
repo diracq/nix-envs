@@ -25,6 +25,7 @@
       setupScript = pkgs.writers.writePython3Bin "diracsetup" {
         libraries = with pkgs.python312Packages; [
           gitpython
+          termcolor
         ];
       } (builtins.readFile ./setupscript.py);
     in

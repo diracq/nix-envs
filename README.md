@@ -89,6 +89,8 @@ cd buildos-web && direnv allow
 
 You should see a message that states `nix environment initialized`.
 
+You are now done setting up your NixOS environment! Continue to follow the instructions in the [buildos-web README](https://github.com/diracq/buildos-web/blob/main/README.md) to get the repo configured.
+
 ### Updating Packages
 
 To update NixOS and rebuild based on your `/env/nixos/configuration.nix` file, run the following:
