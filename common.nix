@@ -19,6 +19,7 @@
     wget
 
     # useful cli tools
+    atuin
     lazygit
     lazydocker
     tmux
@@ -57,6 +58,9 @@
     enable = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+    shellInit = ''
+      eval "$(atuin init zsh)"
+    '';
   };
   users.defaultUserShell = pkgs.zsh;
 
@@ -70,7 +74,7 @@
   };
 
   programs.fzf = {
-    keybindings = true;
+    keybindings = false;
   };
 
   programs.starship = {
