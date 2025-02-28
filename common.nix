@@ -76,4 +76,8 @@
   programs.starship = {
     enable = true;
   };
+
+  services.atuin = {
+    enable = true;
+  };
 }
