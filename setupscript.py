@@ -49,7 +49,7 @@ def setup_github():
         capture_output=True,
         text=True
     )
-    if result.returncode == 0 and "Logged in to github.com account" in result.stdout:
+    if result.returncode == 0 and "Logged in to github" in result.stdout:
         cprint("You are already logged in to GitHub.", "green")
         return
 
@@ -86,7 +86,10 @@ if __name__ == "__main__":
     try:
         setup_github()
     except FileNotFoundError:
-        cprint("GitHub CLI (gh) not found. Please ensure it's installed.", "red")
+        cprint(
+            "GitHub CLI (gh) not found. Please ensure it's installed.",
+            "red"
+        )
         exit(1)
 
     exit_message = """
