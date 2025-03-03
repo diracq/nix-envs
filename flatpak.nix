@@ -4,7 +4,8 @@ let
   desiredFlatpaks = [
     "us.zoom.Zoom"
   ];
-in {
+in
+{
   system.userActivationScripts.flatpakManagement = {
     text = ''
       # add flathub repo
