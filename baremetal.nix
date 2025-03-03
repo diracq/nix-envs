@@ -3,6 +3,7 @@
 {
   imports = [
     ./common.nix
+    ./flatpak.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -16,6 +17,7 @@
 
     # useful gui tools
     code-cursor
+    zed-editor
     vlc
     qalculate-gtk
     gimp
@@ -24,6 +26,8 @@
     pciutils
     lshw
   ];
+
+  services.flatpak.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {
