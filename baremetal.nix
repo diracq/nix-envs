@@ -3,6 +3,7 @@
 {
   imports = [
     ./common.nix
+    ./flatpak.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -24,6 +25,8 @@
     pciutils
     lshw
   ];
+
+  services.flatpak.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {

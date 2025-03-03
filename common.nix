@@ -43,8 +43,6 @@
     nix-output-monitor
   ];
 
-  services.flatpak.enable = true;
-
   programs.git = {
     enable = true;
     lfs.enable = true;
