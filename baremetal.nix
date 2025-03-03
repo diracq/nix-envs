@@ -17,6 +17,7 @@
 
     # useful gui tools
     code-cursor
+    zed-editor
     vlc
     qalculate-gtk
     gimp
