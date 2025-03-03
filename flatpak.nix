@@ -11,7 +11,7 @@ in {
       ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub \
         https://flathub.org/repo/flathub.flatpakrepo
 
-      # 5. Install or re-install the Flatpaks you DO want
+      # install or re-install the flatpaks we want
       for app in ${toString desiredFlatpaks}; do
         echo "Ensuring $app is installed."
         ${pkgs.flatpak}/bin/flatpak install -y flathub $app
