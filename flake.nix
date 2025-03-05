@@ -32,6 +32,8 @@
     {
       nixosConfigurations.wsl = nixos-wsl.nixosConfigurations.default;
 
+      nixosModules.baremetal = ./baremetal.nix;
+
       apps.${system}.default = {
         type = "app";
         program = "${setupScript}/bin/diracsetup";
